@@ -1,12 +1,17 @@
 import { createStore } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import rootReducer from '../reducers'
-import { loadState, saveState } from '../lib/localStorage'
 
-const persistStore = loadState()
-const store = createStore(rootReducer, persistStore)
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
-store.subscribe(() => {
-  saveState(store.getState())
-})
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-export default store
+export default () => {
+  let store = createStore(persistedReducer)
+  let persistor = persistStore(store)
+  return { store, persistor }
+}
