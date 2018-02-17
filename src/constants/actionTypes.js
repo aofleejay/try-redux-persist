@@ -1,7 +1,3 @@
-const INCREASE = 'INCREASE'
-const DECREASE = 'DECREASE'
+const SET_LANGUAGE = 'SET_LANGUAGE'
 
-export {
-  INCREASE,
-  DECREASE,
-}
+export { SET_LANGUAGE }

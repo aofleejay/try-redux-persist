@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import Counter from './Counter'
+import Navbar from './Navbar'
+import Content from './Content'
 import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="app">
-        <Counter />
+        <Navbar />
+        <Content />
       </div>
     )
   }
